@@ -8,9 +8,8 @@ from fibo.models import FibonacciResults
 
 
 def fibonacci_calculation(num):
-    #start_time = time.time()
-    if num < 2:
-        #end_time = time.time() - start_time
+       if num < 2:
+   
         return 1
     else:
         a = 1
@@ -19,7 +18,7 @@ def fibonacci_calculation(num):
             c = a+b
             a = b
             b = c
-        #end_time = time.time() - start_time
+   
         return b
    
 def fib(request):
@@ -34,13 +33,9 @@ def fib(request):
         number = request.GET.get('num1')
         num = int(number)
         result=fibonacci_calculation(num)
-        end_time=(timeit.timeit() +start_time)*60
-        #print(end_time)
-        #time_taken=(timeit.timeit("fibonacci_calculation(num)"))
-
-        #end_time =timeit.timeit("fibanocci_calculaton()", setup="from __main__ import fibonocci_calculation")
-        #end_time=abs(start_time-timeit.timeit())
-        time_taken = round(end_time)
+        end_time=timeit.timeit()
+        t=abs(end_time-start_time)
+        time_taken = t
 
         obj = FibonacciResults.objects.create(
             number=num, result=result, time_taken=time_taken)
